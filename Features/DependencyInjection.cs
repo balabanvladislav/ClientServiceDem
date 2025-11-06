@@ -23,6 +23,7 @@ public static class DependencyInjection
         
         services.AddValidatorsFromAssemblyContaining<GetClientsEndpoint>();
         
+        
         services.Configure<JsonOptions>(opt =>
         {
             opt.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
