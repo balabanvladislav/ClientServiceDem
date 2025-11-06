@@ -1,7 +1,12 @@
+using System;
+using System.Net.Http;
 using System.Security;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Domain.Exceptions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Host.Middleware;
 

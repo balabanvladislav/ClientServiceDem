@@ -1,7 +1,11 @@
+using System;
 using Features;
 using Host.Configuration;
 using Host.Middleware;
 using Infrastructure;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
