@@ -20,7 +20,6 @@ public static class DependencyInjection
             options.RegisterServicesFromAssemblyContaining<GetClientsEndpoint>();
         });
         
-        
         services.AddValidatorsFromAssemblyContaining<GetClientsEndpoint>();
         
         

@@ -51,6 +51,7 @@ public class GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExcep
             // Database/External Service Exceptions (be careful about exposing internal details)
             DbUpdateException => (StatusCodes.Status409Conflict, "A conflict occurred while saving data"),
             HttpRequestException => (StatusCodes.Status502BadGateway, "External service unavailable"),
+            NullReferenceException => (StatusCodes.Status500InternalServerError, "A null reference occurred"),
         
             // Catch-all
             _ => (StatusCodes.Status500InternalServerError, "An error occurred while processing your request")
