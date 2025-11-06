@@ -72,8 +72,6 @@ public class DbSeeder : IDbSeeder
 
     private async Task SeedOrdersAsync(CancellationToken cancellationToken)
     {
-        // Ensure at least some orders exist for demo purposes. This method is idempotent in the sense
-        // it only adds orders when existing count is below a threshold.
         var existingOrderCount = await _context.Orders.CountAsync(cancellationToken);
         if (existingOrderCount > 0)
         {

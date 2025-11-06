@@ -20,12 +20,8 @@ builder.Services
 // Swagger
 ServiceConfiguration.ConfigureSwagger(builder.Services);
 
-// JWT Authentication, can be deleted if not used
-ServiceConfiguration.ConfigureAuthenticationAndAuthorization(builder.Services, builder.Configuration);
-
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddFeatures(builder.Configuration);
-builder.Services.AddConfigurations(builder.Configuration);
 
 var app = builder.Build();
 
@@ -33,7 +29,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    var logger = services.GetRequiredService<Microsoft.Extensions.Logging.ILoggerFactory>().CreateLogger("Program");
+    var logger = services.GetRequiredService<ILoggerFactory>().CreateLogger("Program");
 
     try
     {
@@ -59,9 +55,6 @@ using (var scope = app.Services.CreateScope())
 app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.MapFeatures();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.UseSwagger(c =>
 {

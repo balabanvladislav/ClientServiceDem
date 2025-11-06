@@ -37,8 +37,6 @@ public class ClientService : IClientService
 
     public async Task<long> CreateClient(Client client, CancellationToken cancellationToken)
     {
-        if (client is null) throw new ArgumentNullException(nameof(client));
-
         _context.Clients.Add(client);
         await _context.SaveChangesAsync(cancellationToken);
 

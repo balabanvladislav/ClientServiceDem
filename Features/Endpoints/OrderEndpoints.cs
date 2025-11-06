@@ -14,21 +14,11 @@ public class OrderEndpoints : IEndpoint
         var orderGroup = app.MapGroup("/api/orders")
             .WithTags("Orders");
 
-        orderGroup.MapGet("/", GetOrdersEndpoint.Handle)
-            .Produces<List<Domain.DTO.Responses.OrderResponse>>()
-            .WithName("GetOrders")
-            .WithSummary("Get all existing orders");
+        orderGroup.MapGet("/", GetOrdersEndpoint.Handle);
 
-        orderGroup.MapGet("/{id}", GetOrderByIdEndpoint.Handle)
-            .Produces<Domain.DTO.Responses.OrderResponse>(StatusCodes.Status200OK)
-            .Produces(StatusCodes.Status404NotFound)
-            .WithName("GetOrderById")
-            .WithSummary("Get an order by id with nested order items and products");
+        orderGroup.MapGet("/{id:long}", GetOrderByIdEndpoint.Handle);
 
-        orderGroup.MapPost("/", CreateOrderEndpoint.Handle)
-            .Accepts<AddOrderRequest>(Constants.JsonContentType)
-            .WithName("AddOrder")
-            .WithSummary("Create a new order");
+        orderGroup.MapPost("/", CreateOrderEndpoint.Handle);
     }
 }
 

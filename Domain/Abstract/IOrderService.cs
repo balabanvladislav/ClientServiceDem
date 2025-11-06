@@ -5,9 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Entities;
 
-/// <summary>
-/// Provides operations for managing <see cref="Order"/> entities.
-/// </summary>
 public interface IOrderService
 {
     Task<List<Order>> GetOrders(CancellationToken cancellationToken);
